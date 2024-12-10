@@ -2,13 +2,21 @@ import { countries } from "../../data/countries"
 import styles from './Form.module.css'
 import { useState } from "react"
 import { SearchType } from "../../types"
+import Alert from "../../Alert/Alert"
 
-const Form = () => {
+type FormProps = {
+    fetchWeather: () => void
+}
+
+
+const Form = ({fetchWeather} : FormProps) => {
 
    const [search, setSearch] = useState<SearchType>({
     city: '',
     country: ''
    })
+
+   const [alert, setAlert] = useState('')
 
    const handleChange = (e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLSelectElement>) => {
         setSearch({
@@ -16,9 +24,23 @@ const Form = () => {
             [e.target.name] : e.target.value
         })
    }
+
+   const handleSubmit = (e : React.FormEvent<HTMLFormElement>) =>{
+        console.log("Submit")
+        e.preventDefault()
+        if(Object.values(search).includes('')){
+            setAlert('All fields are mandatory!')
+        }
+
+        fetchWeather()
+   }
     
   return (
-    <form action="" className={styles.form}>
+    <form 
+        className={styles.form}
+        onSubmit={handleSubmit}
+    >
+        {alert && <Alert>{alert}</Alert>}
         <div className={styles.field}>
             <label htmlFor="city">City</label>
             <input 
