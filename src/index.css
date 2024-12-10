@@ -1,0 +1,22 @@
+:root {
+  --white: #FFF;
+  --primary: #F59E0B;
+}
+
+html, body {
+  height: 100%; /* Asegura que html y body ocupen toda la ventana */
+  margin: 0; /* Elimina márgenes predeterminados */
+}
+
+body {
+  font-family: "Outfit", sans-serif;
+  background-image: url('/background.jpg');
+  background-size: cover; /* Asegura que la imagen cubra el fondo */
+  background-position: center; /* Centra la imagen */
+  background-repeat: no-repeat; /* Evita repeticiones */
+  color: var(--white);
+  font-size: 2rem;
+  display: flex;
+  flex-direction: column; /* Si tienes más contenido, esto ayuda */
+  min-height: 100%; /* Permite que el contenido adicional expanda el fondo */
+}
