@@ -14,7 +14,24 @@ npm create vite@latest
 <ul>
   <li>CSS Modules</li>
   <li>API's</li>
-</ul>  
+</ul> 
+
+## Package to use in this project
+
+```bash
+npm i axios
+```
+
+### API Open Weather
+```bash
+https://home.openweathermap.org/
+```
+
+### Environment Variables
+```
+https://vite.dev/guide/env-and-mode
+```
+
 
 # React + TypeScript + Vite
 

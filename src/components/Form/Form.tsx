@@ -5,7 +5,7 @@ import { SearchType } from "../../types"
 import Alert from "../../Alert/Alert"
 
 type FormProps = {
-    fetchWeather: () => void
+    fetchWeather: (search : SearchType) => Promise<void>;
 }
 
 
@@ -31,8 +31,9 @@ const Form = ({fetchWeather} : FormProps) => {
         if(Object.values(search).includes('')){
             setAlert('All fields are mandatory!')
         }
-
-        fetchWeather()
+        console.log("From Submit: ", search)
+        fetchWeather(search)
+       
    }
     
   return (
