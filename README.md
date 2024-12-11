@@ -13,13 +13,22 @@ npm create vite@latest
 ### Topics
 <ul>
   <li>CSS Modules</li>
-  <li>API's</li>
-</ul> 
+  <li>API's
+    <ul>
+      <li>Castear el type</li>
+      <li>Type Guards</li>
+      <li>ZOD</li>
+    </ul>
+  </li>
+</ul>
+
 
 ## Package to use in this project
 
 ```bash
 npm i axios
+npm i zod --> To manage the API Response
+npm i valibot --> To manage the API Response
 ```
 
 ### API Open Weather
