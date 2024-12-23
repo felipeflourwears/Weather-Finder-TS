@@ -42,6 +42,11 @@ https://home.openweathermap.org/
 https://vite.dev/guide/env-and-mode
 ```
 
+### SpinKit
+```
+https://tobiasahlin.com/spinkit/
+```
+
 
 # React + TypeScript + Vite
 

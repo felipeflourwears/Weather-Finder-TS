@@ -68,9 +68,13 @@ const useWeather = () => {
             temp_min: 0
         }
     })
+
+    const [loading, setLoading] = useState(false)
+
     const fetchWeather = async (search : SearchType) =>{
         
         const appId = import.meta.env.VITE_API_KEY
+        setLoading(true)
         try {
             console.log("Consultando...")
 
@@ -127,6 +131,8 @@ const useWeather = () => {
 
         } catch (error) {
             console.log(error)
+        } finally{
+           setLoading(true) 
         }
     }
 
@@ -134,6 +140,7 @@ const useWeather = () => {
 
     return{
         weather,
+        loading,
         fetchWeather,
         hasWeatherData
     }
