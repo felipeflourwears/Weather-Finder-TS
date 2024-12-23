@@ -18,6 +18,7 @@ npm create vite@latest
       <li>Castear el type</li>
       <li>Type Guards</li>
       <li>ZOD</li>
+      <li>Valibot</li>
     </ul>
   </li>
 </ul>

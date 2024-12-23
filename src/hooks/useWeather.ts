@@ -1,6 +1,7 @@
 import axios from "axios"
 import { SearchType } from "../types"
 import { z } from 'zod'
+import { useState, useMemo } from "react"
 
 
 //TYPE GUARD O ASSERTION
@@ -29,7 +30,8 @@ const Weather = z.object({
         temp_min: z.number()
     })
 }) 
-type Weather = z.infer<typeof Weather>
+
+export type Weather = z.infer<typeof Weather>
 
 
 //Valibot
@@ -58,6 +60,14 @@ type Weather = {
 
 
 const useWeather = () => {
+    const [weather, setWeather] = useState<Weather>({
+        name: '',
+        main:{
+            temp: 0,
+            temp_max: 0,
+            temp_min: 0
+        }
+    })
     const fetchWeather = async (search : SearchType) =>{
         
         const appId = import.meta.env.VITE_API_KEY
@@ -108,6 +118,7 @@ const useWeather = () => {
             const { data: weatherResult } = await axios(weatherUrl)
             const result = Weather.safeParse(weatherResult)
             if(result.success){
+                setWeather(result.data)
                 console.log(result.data.name)
                 console.log(result.data.main.temp)
             }else{
@@ -118,8 +129,13 @@ const useWeather = () => {
             console.log(error)
         }
     }
+
+    const hasWeatherData = useMemo(() => weather.name,[weather])
+
     return{
+        weather,
         fetchWeather,
+        hasWeatherData
     }
 }
 
