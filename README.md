@@ -1,3 +1,7 @@
+# Weather Finder
+
+This project is a simple simulation that allows you to retrieve weather information for specific countries. You can interact with different cities within selected countries using the OpenWeather API.
+
 ## Project Setup
 
 The project was created using Vite with the following configuration:
@@ -9,6 +13,17 @@ npm create vite@latest
 √ Select a framework: » React
 √ Select a variant: » TypeScript + SWC
 ```
+
+# Site Deploy by Netlify
+
+```bash
+https://iridescent-scone-22eb1d.netlify.app/
+```
+
+## Screenshots
+
+### Main Screen
+<img src="public/main.png" alt="main">
 
 ### Topics
 <ul>

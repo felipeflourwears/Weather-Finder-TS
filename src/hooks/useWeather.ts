@@ -83,7 +83,9 @@ const useWeather = () => {
             console.log("Consultando...")
 
             //Get Latitude and Longitude to use on the next API
-            const geoUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${search.city},${search.country}&appid=${appId}`
+            const geoUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${search.city},${search.country}&appid=${appId}`
+            //Local
+            //const geoUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${search.city},${search.country}&appid=${appId}`
             console.log(geoUrl)
 
             const { data } = await axios(geoUrl)
