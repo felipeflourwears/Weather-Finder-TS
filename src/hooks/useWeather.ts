@@ -57,24 +57,28 @@ type Weather = {
 }; 
 */
 
-
+const initialState = {
+    name: '',
+    main: {
+        temp: 0,
+        temp_max: 0,
+        temp_min: 0
+    }
+}
 
 const useWeather = () => {
-    const [weather, setWeather] = useState<Weather>({
-        name: '',
-        main:{
-            temp: 0,
-            temp_max: 0,
-            temp_min: 0
-        }
-    })
+    const [weather, setWeather] = useState<Weather>(initialState)
 
     const [loading, setLoading] = useState(false)
+
+    const [notFound, setNotFound] = useState(false)
 
     const fetchWeather = async (search : SearchType) =>{
         
         const appId = import.meta.env.VITE_API_KEY
         setLoading(true)
+        setWeather(initialState)
+        
         try {
             console.log("Consultando...")
 
@@ -83,7 +87,8 @@ const useWeather = () => {
             console.log(geoUrl)
 
             const { data } = await axios(geoUrl)
-            console.log(data)
+            console.log("DATA: ", data)
+
 
             const lat = data[0].lat
             const lon = data[0].lon
@@ -93,6 +98,7 @@ const useWeather = () => {
             //Get Current Weather
             const weatherUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${appId}`
             console.log(weatherUrl)
+            setNotFound(false)
 
 
             //Castear el type
@@ -131,8 +137,10 @@ const useWeather = () => {
 
         } catch (error) {
             console.log(error)
+            console.log('Clima No Finded')
+            setNotFound(true)
         } finally{
-           setLoading(true) 
+           setLoading(false) 
         }
     }
 
@@ -141,8 +149,10 @@ const useWeather = () => {
     return{
         weather,
         loading,
+        notFound,
         fetchWeather,
         hasWeatherData
+        
     }
 }
 
